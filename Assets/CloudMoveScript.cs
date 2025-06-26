@@ -10,7 +10,7 @@ public class CloudMoveScript : MonoBehaviour
     void Update()
     {
         transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
-        if (transform.position.x == despawnLocation)
+        if (transform.position.x < despawnLocation)
         {
             Destroy(gameObject);
         }

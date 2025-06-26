@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PipeSpawnScript : MonoBehaviour
 {
     public GameObject pipe;
+    public GameObject pipeAbility;
     public float spawnRate = 2;
     private float timer = 0;
     public float heightOffset = 10;
@@ -31,10 +33,22 @@ public class PipeSpawnScript : MonoBehaviour
     {
         float lowestPoint = transform.position.y - heightOffset;
         float highestPoint = transform.position.y + heightOffset;
-        Instantiate(
-            pipe,
-            new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0),
-            transform.rotation
-        );
+        int randomNumber = Random.Range(0, 3);
+        if (randomNumber == 1)
+        {
+            Instantiate(
+                pipeAbility,
+                new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0),
+                transform.rotation
+            );
+        }
+        else
+        {
+            Instantiate(
+                pipe,
+                new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0),
+                transform.rotation
+            );
+        }
     }
 }
